@@ -1,7 +1,7 @@
 # Devenv
 .devenv*
 devenv.local.nix
-
+*.ipynb_checkpoints*
 devenv.nix
 # direnv
 .direnv
