@@ -6,7 +6,30 @@
   ...
 }: {
   # https://devenv.sh/basics/
-  env.GREET = "devenv";
+  env.CUDA_PATH = "${pkgs.cudatoolkit}";
+  env.CUDA_HOME = "${pkgs.cudatoolkit}";
+  env.LD_LIBRARY_PATH = "${pkgs.cudatoolkit}/lib:${pkgs.cudatoolkit.lib}/lib:${pkgs.linuxPackages.nvidia_x11}/lib";
+  env.NVIDIA_VISIBLE_DEVICES = "all";
+  env.NVIDIA_DRIVER_CAPABILITIES = "compute,utility";
+
+  # https://devenv.sh/packages/
+  packages = with pkgs; [
+    git
+    cmake
+    zlib
+    pre-commit
+    curl
+    wget
+    age
+    sops
+    git
+    cudatoolkit
+    cudaPackages.cudnn
+    cudaPackages.libcutensor
+    cudaPackages.nccl
+    cudaPackages.cuda_nvcc
+    linuxPackages.nvidia_x11
+  ];
 
   languages.python = {
     enable = true;
@@ -15,9 +38,6 @@
     uv.enable = true;
     uv.sync.enable = true;
   };
-
-  # https://devenv.sh/packages/
-  packages = [pkgs.git];
 
   # https://devenv.sh/languages/
   # languages.rust.enable = true;
