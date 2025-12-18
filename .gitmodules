@@ -1,0 +1,3 @@
+[submodule "ete387"]
+	path = ete387
+	url = https://github.com/reinthal/ete387
