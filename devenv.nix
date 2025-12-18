@@ -10,7 +10,9 @@
   env.CUDA_HOME = "${pkgs.cudatoolkit}";
   env.LD_LIBRARY_PATH = "${pkgs.cudatoolkit}/lib:${pkgs.cudatoolkit.lib}/lib:${pkgs.linuxPackages.nvidia_x11}/lib";
   env.NVIDIA_VISIBLE_DEVICES = "all";
+  env.TORCHDYNAMO_VERBOSE = 1;
   env.NVIDIA_DRIVER_CAPABILITIES = "compute,utility";
+  env.TRITON_LIBCUDA_PATH = "/run/opengl-driver/lib";
 
   # https://devenv.sh/packages/
   packages = with pkgs; [
