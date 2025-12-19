@@ -13,9 +13,13 @@
   env.TORCHDYNAMO_VERBOSE = 1;
   env.NVIDIA_DRIVER_CAPABILITIES = "compute,utility";
   env.TRITON_LIBCUDA_PATH = "/run/opengl-driver/lib";
-
+  cachix = {
+    pull = ["reinthal"];
+    push = "reinthal";
+  };
   # https://devenv.sh/packages/
   packages = with pkgs; [
+    cachix
     git
     cmake
     zlib
